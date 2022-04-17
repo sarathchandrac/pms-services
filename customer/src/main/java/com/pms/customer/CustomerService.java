@@ -14,6 +14,8 @@ public record CustomerService(CustomerRepository customerRepository) {
         // TODO: 09/04/22 check if email is valid
         // TODO: 09/04/22 check if email is not taken
         customerRepository.saveAndFlush(customer);
+        // TOdO: replace localhost:port with FRAUD
+
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject("http://localhost:8081/api/v1/fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 customer.getId()
